@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/wolf-hangman/static/css/main.4c1a436e.css",
+    "main.js": "/wolf-hangman/static/js/main.e2499d6b.js",
+    "index.html": "/wolf-hangman/index.html",
+    "main.4c1a436e.css.map": "/wolf-hangman/static/css/main.4c1a436e.css.map",
+    "main.e2499d6b.js.map": "/wolf-hangman/static/js/main.e2499d6b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4c1a436e.css",
+    "static/js/main.e2499d6b.js"
+  ]
+}

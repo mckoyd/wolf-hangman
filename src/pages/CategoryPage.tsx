@@ -10,7 +10,7 @@ const CategoryPage: React.FC = () => {
       <GoBackBanner bannerTitle="Pick a Category" />
       <div className="categories">
         {categories.map((category, index) => (
-          <CategoryButton category={category} />
+          <CategoryButton category={category} key={index} />
         ))}
       </div>
     </div>

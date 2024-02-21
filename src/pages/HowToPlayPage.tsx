@@ -4,6 +4,7 @@ import "./HowToPlayPage.css";
 import { howToPlayInfo } from "./HowToPlayPage.config";
 import HowToPlayInfoCard from "../components/HowToPlayInfoCard";
 import { useNavigate } from "react-router-dom";
+import GoBackBanner from "../components/GoBackBanner";
 
 const HowToPlayPage: React.FC = () => {
   const navigate = useNavigate();
@@ -12,13 +13,7 @@ const HowToPlayPage: React.FC = () => {
   }, [navigate]);
   return (
     <div className="how-to-play-page">
-      <div className="nav-banner">
-        <div className="icon-back-container">
-          <IconBack className="icon-back" onClick={handleIconBack} />
-        </div>
-
-        <p className="title">How to Play</p>
-      </div>
+      <GoBackBanner bannerTitle={"How to Play"} />
       {howToPlayInfo.map((infoObject, index) => (
         <HowToPlayInfoCard
           key={`${infoObject.title}-${index}}`}

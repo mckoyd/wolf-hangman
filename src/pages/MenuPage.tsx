@@ -6,11 +6,13 @@ import { ReactComponent as IconPlay } from "../assets/images/icon-play.svg";
 
 const MenuPage: React.FC = () => {
   const navigate = useNavigate();
+
   const handleHowToPlayButton = useCallback(
     () => navigate("/how-to-play"),
     [navigate]
   );
-  const handlePlayButton = useCallback(() => {}, []);
+  const handlePlayButton = useCallback(() => navigate("/category"), [navigate]);
+
   return (
     <div className="main-card">
       <GameTitle className="game-title" />

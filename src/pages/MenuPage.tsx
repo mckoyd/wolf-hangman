@@ -19,7 +19,7 @@ const MenuPage: React.FC = () => {
       </div>
       <button
         type="button"
-        className="button how-to-play"
+        className="how-to-play-btn"
         onClick={handleHowToPlayButton}
       >
         How To Play

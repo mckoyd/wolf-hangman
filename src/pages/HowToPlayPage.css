@@ -1,0 +1,31 @@
+.how-to-play-page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2em 1em;
+}
+
+.title {
+  font-size: 3em;
+  background: linear-gradient(180deg, #67b6ff 16.42%, #ffffff 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #243041;
+  margin-block: 0;
+}
+
+.icon-back-container {
+  background: linear-gradient(180deg, #fe71fe 16.42%, #7199ff 100%);
+  box-shadow: inset 0px -5px 0px -1px rgba(157, 45, 245, 0.25);
+  border-radius: 999px;
+  width: 3em;
+  height: 3em;
+}

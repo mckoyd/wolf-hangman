@@ -9,7 +9,7 @@ const HowToPlayPage: React.FC = () => {
   const navigate = useNavigate();
   const handleIconBack = useCallback(() => {
     navigate("/");
-  }, []);
+  }, [navigate]);
   return (
     <div className="how-to-play-page">
       <div className="nav-banner">

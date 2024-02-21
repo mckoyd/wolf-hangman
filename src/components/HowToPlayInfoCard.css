@@ -1,0 +1,31 @@
+.info-card {
+  background: white;
+  color: #887dc0;
+  margin: 0.5em 1em;
+  border-radius: 20px;
+  padding: 1em;
+  text-align: left;
+  height: 8em;
+}
+
+.info-header {
+  display: flex;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  margin-bottom: 0.5em;
+}
+
+.info-number {
+  color: #2463ff;
+  margin-right: 1em;
+}
+
+.info-title {
+  text-transform: uppercase;
+  color: #261676;
+}
+
+.info-desc {
+  margin-bottom: 1em;
+  letter-spacing: 0.5px;
+}

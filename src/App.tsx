@@ -1,21 +1,18 @@
 import React from "react";
-
-import { ReactComponent as GameTitle } from "./assets/images/game-title.svg";
-import { ReactComponent as IconPlay } from "./assets/images/icon-play.svg";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MenuPage from "./pages/MenuPage";
 import "./App.css";
+import HowToPlayPage from "./pages/HowToPlayPage";
 
 const App: React.FC = () => {
   return (
     <div className="main">
-      <div className="main-card">
-        <GameTitle className="game-title" />
-        <div className="icon-container">
-          <IconPlay className="icon-play" />
-        </div>
-        <button type="button" className="button how-to-play">
-          How To Play
-        </button>
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MenuPage />} />
+          <Route path="how-to-play" element={<HowToPlayPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

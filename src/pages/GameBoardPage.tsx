@@ -5,14 +5,27 @@ import "./GameBoardPage.css";
 import { useRecoilValue } from "recoil";
 import { wordState } from "../state/wordState";
 import { alphabet } from "./GameBoardPage.config";
+import { categoryState } from "../state/categoryState";
+import { useNavigate } from "react-router-dom";
 
 const GameBoardPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const word = useRecoilValue(wordState);
+  const category = useRecoilValue(categoryState);
+
   const [remainingLife, setRemainingLife] = useState<number>(100);
+  const [showPauseMenu, setShowPauseMenu] = useState<boolean>(false);
+  const [showGameResult, setShowGameResult] = useState<boolean>(false);
+  const [gameResult, setGameResult] = useState<string>("");
   const [lettersUsed, setLettersUsed] = useState<{ [key: string]: boolean }>();
   const [lettersChosen, setLettersChosen] = useState<{
     [key: string]: boolean;
   }>();
-  const word = useRecoilValue(wordState);
+
+  const [remainingLetters, setRemainingLetters] = useState<string>(
+    word.name.toLowerCase().replace(/\s/g, "")
+  );
 
   const getLetters = useCallback(
     () => word.name.toUpperCase().replace(/\s/g, "").split(""),
@@ -59,10 +72,14 @@ const GameBoardPage: React.FC = () => {
           key={`${letter}-alphabet-${index}`}
           className="alphabet-tile"
           onClick={(event) => {
-            setLettersChosen((prev) => ({ ...prev, [letter]: true }));
-            event.currentTarget.classList.toggle("used-letter");
-            if (lettersUsed && !lettersUsed[letter]) {
-              setRemainingLife((currentLife) => currentLife - 100 * (1 / 8));
+            if (!event.currentTarget.classList.contains("used-letter")) {
+              setLettersChosen((prev) => ({ ...prev, [letter]: true }));
+              event.currentTarget.classList.add("used-letter");
+              const letterRegExp = new RegExp(`${letter.toLowerCase()}`, "g");
+              setRemainingLetters((curr) => curr.replace(letterRegExp, ""));
+              if (lettersUsed && !lettersUsed[letter]) {
+                setRemainingLife((currentLife) => currentLife - 100 * (1 / 8));
+              }
             }
           }}
         >
@@ -72,18 +89,48 @@ const GameBoardPage: React.FC = () => {
     [lettersUsed]
   );
 
+  const handleMenuClick = useCallback(() => {
+    setShowPauseMenu(true);
+  }, []);
+
+  const handleContinueButton = useCallback(() => {
+    setShowPauseMenu(false);
+  }, []);
+
+  const handleNewCategoryButton = useCallback(() => {
+    navigate("/category");
+  }, [navigate]);
+
+  const handleQuitButton = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
+
   useEffect(() => {
     setLettersUsed(generateLettersUsedMap());
   }, [generateLettersUsedMap]);
+
+  useEffect(() => {
+    if (remainingLife === 0) {
+      setShowGameResult(true);
+      setGameResult("You Lose");
+    }
+  }, [remainingLife]);
+
+  useEffect(() => {
+    if (remainingLetters === "") {
+      setShowGameResult(true);
+      setGameResult("You Win");
+    }
+  }, [remainingLetters]);
 
   return (
     <div className="game-board-page">
       <div className="title-banner">
         <div className="banner-left">
           <div className="icon-menu-container">
-            <IconMenu className="icon-menu" />
+            <IconMenu className="icon-menu" onClick={handleMenuClick} />
           </div>
-          <p className="banner-title">Countries</p>
+          <p className="banner-title">{category}</p>
         </div>
         <div className="banner-right">
           <div className="life-span">
@@ -97,6 +144,39 @@ const GameBoardPage: React.FC = () => {
       </div>
       <div className="game-tiles">{generateTiles()}</div>
       <div className="alphabet-tiles">{generateAlphabet()}</div>
+      {(showPauseMenu || showGameResult) && (
+        <>
+          <div className="pause-overlay"></div>
+          <div className="pause-menu-modal">
+            <p className="pause-title">
+              {showPauseMenu ? "Paused" : gameResult}
+            </p>
+            <div className="pause-btns">
+              <button
+                type="button"
+                className="pause-btn-opt"
+                onClick={handleContinueButton}
+              >
+                Continue
+              </button>
+              <button
+                type="button"
+                className="pause-btn-opt"
+                onClick={handleNewCategoryButton}
+              >
+                New Category
+              </button>
+              <button
+                type="button"
+                className="pause-btn-opt quit"
+                onClick={handleQuitButton}
+              >
+                Quit Game
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

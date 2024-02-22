@@ -24,7 +24,7 @@ const CategoryButton: React.FC<ICategoryButton> = ({ category }) => {
 
     setWord(wordSelection);
     navigate("/game-board");
-  }, [getRandomIndex, category, setWord]);
+  }, [getRandomIndex, category, setWord, navigate]);
 
   return (
     <button

@@ -8,24 +8,83 @@ import { wordState } from "../state/wordState";
 const GameBoardPage: React.FC = () => {
   const [remainingLife, setRemainingLife] = useState<number>(100);
   const word = useRecoilValue(wordState);
+  const getLetters = useCallback(
+    () => word.name.toUpperCase().replace(/\s/g, "").split(""),
+    [word]
+  );
+  const generateLettersUsedMap = useCallback(
+    () =>
+      getLetters().reduce((lettersMap, currentLetter) => {
+        if (!lettersMap[currentLetter]) {
+          lettersMap[currentLetter] = true;
+        }
+        return lettersMap;
+      }, {} as { [key: string]: boolean }),
+    []
+  );
 
-  const generateTileLines = useCallback(() => word.name.split(" "), [word]);
+  const generateTileLines = useCallback(
+    () => word.name.toUpperCase().split(" "),
+    [word]
+  );
+
   const generateTiles = useCallback(
     () =>
       generateTileLines().map((tileLine, index) => (
         <div className="tile-line" key={`${index}`}>
           {tileLine.split("").map((tileLetter, index) => (
-            <span className="tile"></span>
+            <span key={`${tileLetter}-${index}`} className="blank-tile"></span>
           ))}
         </div>
       )),
     []
   );
 
+  const generateAlphabet = useCallback(
+    () =>
+      [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      ].map((letter, index) => (
+        <span key={`${letter}-alphabet-${index}`} className="alphabet-tile">
+          {letter}
+        </span>
+      )),
+    []
+  );
+
   useEffect(() => {
-    console.log(word);
-    console.log("generation", generateTiles());
-  });
+    console.log(
+      "Letters",
+      getLetters(),
+      "LettersUsed",
+      generateLettersUsedMap()
+    );
+  }, [getLetters, generateLettersUsedMap]);
 
   return (
     <div className="game-board-page">
@@ -47,6 +106,7 @@ const GameBoardPage: React.FC = () => {
         </div>
       </div>
       <div className="game-tiles">{generateTiles()}</div>
+      <div className="alphabet-tiles">{generateAlphabet()}</div>
     </div>
   );
 };

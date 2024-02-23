@@ -7,6 +7,7 @@ import { wordState } from "../state/wordState";
 import { alphabet } from "./GameBoardPage.config";
 import { categoryState } from "../state/categoryState";
 import { useNavigate } from "react-router-dom";
+import GenButton from "../components/GenButton";
 
 const GameBoardPage: React.FC = () => {
   const navigate = useNavigate();
@@ -152,27 +153,21 @@ const GameBoardPage: React.FC = () => {
               {showPauseMenu ? "Paused" : gameResult}
             </p>
             <div className="pause-btns">
-              <button
-                type="button"
-                className="pause-btn-opt"
-                onClick={handleContinueButton}
-              >
-                Continue
-              </button>
-              <button
-                type="button"
-                className="pause-btn-opt"
-                onClick={handleNewCategoryButton}
-              >
-                New Category
-              </button>
-              <button
-                type="button"
-                className="pause-btn-opt quit"
-                onClick={handleQuitButton}
-              >
-                Quit Game
-              </button>
+              <GenButton
+                buttonClass="pause-btn-opt"
+                buttonText="Continue"
+                handler={handleContinueButton}
+              />
+              <GenButton
+                buttonClass="pause-btn-opt"
+                buttonText="New Category"
+                handler={handleNewCategoryButton}
+              />
+              <GenButton
+                buttonClass="pause-btn-opt quit"
+                buttonText="Quit Game"
+                handler={handleQuitButton}
+              />
             </div>
           </div>
         </>

@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as GameTitle } from "../assets/images/game-title.svg";
 import { ReactComponent as IconPlay } from "../assets/images/icon-play.svg";
+import GenButton from "../components/GenButton";
+
+import "./MenuPage.css";
 
 const MenuPage: React.FC = () => {
   const navigate = useNavigate();
@@ -19,13 +22,11 @@ const MenuPage: React.FC = () => {
       <div className="icon-container">
         <IconPlay className="icon-play" onClick={handlePlayButton} />
       </div>
-      <button
-        type="button"
-        className="how-to-play-btn"
-        onClick={handleHowToPlayButton}
-      >
-        How To Play
-      </button>
+      <GenButton
+        buttonClass="how-to-play-btn"
+        handler={handleHowToPlayButton}
+        buttonText="How To Play"
+      />
     </div>
   );
 };

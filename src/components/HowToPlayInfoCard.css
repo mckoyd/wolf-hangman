@@ -29,3 +29,51 @@
   margin-bottom: 1em;
   letter-spacing: 0.5px;
 }
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 641px) {
+  .info-card {
+    display: flex;
+    align-items: center;
+    padding: 3em;
+  }
+
+  .info-number {
+    margin-right: 0.5em;
+    font-size: 6em;
+  }
+
+  .info-title {
+    font-size: 2em;
+    letter-spacing: 1.5px;
+    margin: 0.5em 0;
+  }
+
+  .info-desc {
+    font-size: 1.3em;
+    margin-bottom: 0;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 1336px) {
+  .info-card {
+    flex-direction: column;
+    height: 35em;
+    align-items: center;
+    text-align: center;
+    width: 30%;
+  }
+
+  .info-number {
+    margin: 0.1em 0;
+  }
+
+  .info-title {
+    font-size: 3em;
+  }
+
+  .info-desc {
+    font-size: 2.3em;
+  }
+}

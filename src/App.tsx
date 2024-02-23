@@ -1,10 +1,12 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
 import MenuPage from "./pages/MenuPage";
-import "./App.css";
 import HowToPlayPage from "./pages/HowToPlayPage";
 import CategoryPage from "./pages/CategoryPage";
 import GameBoardPage from "./pages/GameBoardPage";
+
+import "./App.css";
 
 const App: React.FC = () => {
   return (

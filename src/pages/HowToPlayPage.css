@@ -34,3 +34,59 @@
 .icon-back {
   width: 45%;
 }
+
+.info-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 641px) {
+  .how-to-play-page {
+    gap: 1.5em;
+  }
+  .nav-banner {
+    justify-content: flex-start;
+  }
+
+  .icon-back-container {
+    margin-right: 5em;
+  }
+
+  .title {
+    font-size: 5em;
+  }
+  .icon-back-container {
+    margin-right: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4em;
+    height: 4em;
+  }
+
+  .info-cards {
+    gap: 1em;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 1336px) {
+  .how-to-play-page {
+    margin: 5em;
+  }
+
+  .info-cards {
+    flex-direction: row;
+  }
+
+  .title {
+    font-size: 6em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .icon-back-container {
+    position: fixed;
+  }
+}

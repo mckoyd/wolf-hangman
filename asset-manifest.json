@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/wolf-hangman/static/css/main.efc189a2.css",
+    "main.js": "/wolf-hangman/static/js/main.147f60c6.js",
+    "static/media/MouseMemoirs-Regular.ttf": "/wolf-hangman/static/media/MouseMemoirs-Regular.7f2e3f49a17c1e291d24.ttf",
+    "static/media/game-title.svg": "/wolf-hangman/static/media/game-title.16bbc0e7c86547bb65204bcc71db9fbf.svg",
+    "static/media/background-mobile.svg": "/wolf-hangman/static/media/background-mobile.49cbef3c9071ea349526.svg",
+    "static/media/icon-play.svg": "/wolf-hangman/static/media/icon-play.ec0f6b3d12d199338807e6c3a8732cfc.svg",
+    "index.html": "/wolf-hangman/index.html",
+    "static/media/icon-heart.svg": "/wolf-hangman/static/media/icon-heart.d37a1e501cc1e5a13a8bb7cea3e9a0dd.svg",
+    "static/media/icon-back.svg": "/wolf-hangman/static/media/icon-back.b1f9e10fbb9948dba457480d2a446eac.svg",
+    "static/media/icon-menu.svg": "/wolf-hangman/static/media/icon-menu.1354a6dc6c03e6ec299765532218218a.svg",
+    "main.efc189a2.css.map": "/wolf-hangman/static/css/main.efc189a2.css.map",
+    "main.147f60c6.js.map": "/wolf-hangman/static/js/main.147f60c6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.efc189a2.css",
+    "static/js/main.147f60c6.js"
+  ]
+}

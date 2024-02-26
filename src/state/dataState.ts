@@ -1,11 +1,11 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
 
 export interface Word {
   name: string;
   selected: boolean;
 }
 
-interface iData {
+export interface iData {
   [key: string]: Word[];
 }
 
@@ -205,4 +205,10 @@ export const dataState = atom({
       { name: "American Football", selected: false },
     ],
   } as iData,
+});
+
+export const dataSelector = selector({
+  key: "DataSelector",
+  get: ({ get }): iData => ({ ...get(dataState) } as iData),
+  set: ({ set }, newValue) => set(dataState, newValue),
 });

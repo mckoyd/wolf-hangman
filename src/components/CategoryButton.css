@@ -10,3 +10,20 @@
   height: 100%;
   font-size: 1.5em;
 }
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 641px) {
+  .category-btn {
+    width: 45%;
+    height: 25%;
+    border-radius: 40px;
+    font-size: 3em;
+  }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 1336px) {
+  .category-btn {
+    width: 30%;
+  }
+}

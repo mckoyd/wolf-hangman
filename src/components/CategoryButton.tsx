@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect } from "react";
 import "./CategoryButton.css";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { wordState } from "../state/wordState";
 import { useNavigate } from "react-router-dom";
 import { categoryState } from "../state/categoryState";
-import { dataState } from "../state/dataState";
+import { dataSelector, dataState, iData } from "../state/dataState";
 
 interface ICategoryButton {
   category: string;
@@ -15,7 +15,7 @@ const CategoryButton: React.FC<ICategoryButton> = ({ category }) => {
   const setWord = useSetRecoilState(wordState);
   const setCategory = useSetRecoilState(categoryState);
 
-  const data = useRecoilValue(dataState);
+  const [data, setData] = useRecoilState<iData>(dataSelector);
 
   const getRandomIndex = useCallback(
     (limit: number) => Math.floor(Math.random() * limit),
@@ -34,7 +34,6 @@ const CategoryButton: React.FC<ICategoryButton> = ({ category }) => {
     navigate("/game-board");
   }, [getRandomIndex, category, data, setWord, setCategory, navigate]);
 
-  useEffect(() => {});
   return (
     <button
       type="button"
